@@ -1,0 +1,273 @@
+:root {
+  --bg: #14182e;
+  --panel: #1d2340;
+  --line: #3b4470;
+  --text: #f2ede4;
+  --muted: #8d93b8;
+  --gold: #ffd84a;
+  --green: #4cd964;
+  --red: #ff4f5e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "VT323", "Courier New", monospace;
+  font-size: 22px;
+}
+
+header,
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 20px;
+  padding-bottom: 16px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 44px;
+  font-weight: normal;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+h2 {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: normal;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.stages {
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+}
+
+.stages li + li::before {
+  content: "> ";
+  color: var(--line);
+}
+
+.stages .clear {
+  color: var(--green);
+}
+
+.stages .current {
+  color: var(--gold);
+}
+
+.stages .lost {
+  color: var(--red);
+}
+
+.arena {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.panel {
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 2px solid var(--line);
+}
+
+.sprite {
+  image-rendering: pixelated;
+}
+
+.party {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  border: 2px solid var(--line);
+  text-align: center;
+  line-height: 1;
+}
+
+.card .sprite {
+  width: 72px;
+  height: 72px;
+}
+
+.card.fallen {
+  opacity: 0.35;
+  filter: grayscale(1);
+}
+
+.hp-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--bg);
+}
+
+.hp-fill {
+  height: 100%;
+  background: var(--green);
+  transition: width 0.3s ease;
+}
+
+.hp-fill.low {
+  background: var(--red);
+}
+
+.small {
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.capped {
+  font-size: 18px;
+  color: var(--gold);
+}
+
+.monster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+}
+
+.monster .sprite {
+  width: 144px;
+  height: 144px;
+}
+
+.monster .name {
+  font-size: 28px;
+}
+
+.monster.defeated .sprite {
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+
+.hit {
+  animation: hit 0.25s ease;
+}
+
+@keyframes hit {
+  0% {
+    transform: translateX(-4px);
+    filter: brightness(2);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.status {
+  min-height: 30px;
+  margin: 16px 0 10px;
+  font-size: 28px;
+}
+
+.status.stage-won,
+.status.quest-complete {
+  color: var(--green);
+}
+
+.status.defeat {
+  color: var(--red);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button {
+  padding: 4px 14px;
+  background: var(--panel);
+  color: var(--text);
+  border: 2px solid var(--line);
+  font-family: inherit;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--gold);
+}
+
+button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+button.active {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.log {
+  height: 220px;
+  margin: 16px 0 24px;
+  padding: 10px 16px;
+  overflow-y: auto;
+  list-style: none;
+  border: 2px solid var(--line);
+  font-size: 19px;
+  line-height: 1.2;
+}
+
+.log .log-round {
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.log .log-fallen,
+.log .log-defeat {
+  color: var(--red);
+}
+
+.log .log-result {
+  color: var(--green);
+}
+
+.log .log-stage,
+.log .log-rest,
+.log .log-warning {
+  color: var(--gold);
+}
+
+@media (max-width: 800px) {
+  .arena {
+    grid-template-columns: 1fr;
+  }
+}

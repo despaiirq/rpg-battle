@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Party Battle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Party Battle</h1>
+    <ol id="stages" class="stages"></ol>
+  </header>
+
+  <main>
+    <section class="arena">
+      <div class="panel">
+        <h2>Party <span id="party-count"></span></h2>
+        <div id="party" class="party"></div>
+      </div>
+      <div class="panel">
+        <h2 id="stage-label">Stage</h2>
+        <div id="monster" class="monster"></div>
+      </div>
+    </section>
+
+    <p id="status" class="status"></p>
+
+    <div class="controls">
+      <button id="next-round" disabled>Next round</button>
+      <button id="auto-play" disabled>Auto play</button>
+      <button id="next-battle" disabled>Next battle</button>
+      <button id="restart" disabled>Restart</button>
+    </div>
+
+    <ul id="log" class="log"></ul>
+  </main>
+
+  <script src="js/monsters.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/battle.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
