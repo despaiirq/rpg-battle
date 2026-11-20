@@ -34,10 +34,10 @@ registerHero({
 registerHero({
   name: "Mogger",
   sprite: "burger-knight",
-  hp: 1488,
+  hp: 5000,
   moves: [
     { name: "Mogg", damage: 6767 },
-    { name: "Aura", damage: 6969 },
-    { name: "Mew", damage: 911911 }
+    { name: "Nigga breathe", damage: 6969 },
+    { name: "Ejaculate", damage: 911911 }
   ]
 });
